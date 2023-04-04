@@ -121,6 +121,11 @@ class Game:
                 self.play_sound("hiss.wav")
                 raise "Game Over"
 
+        # snake colliding with border
+        if not (0 <= self.snake.x[0] <= WIDTH and 0 <= self.snake.y[0] <= HEIGHT):
+            self.play_sound("crash.mp3")
+            raise "Game Over"
+
     def show_game_over(self):
         self.surface.fill(BLUE)
         font = pygame.font.SysFont("monospace", 70, "bold")
@@ -178,7 +183,7 @@ class Game:
                 pause = True
                 self.reset()
 
-            time.sleep(0.3)
+            time.sleep(0.15)
 
 
 if __name__ == "__main__":
